@@ -1,0 +1,49 @@
+{
+  "name": "homelink-code-test",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "lint": "prettier src --check && eslint src --ext .ts",
+    "format": "prettier --ignore-path --write \"**/*.+(ts|json)\"",
+    "start:prod": "node dist/index.js",
+    "start:dev": "tsx watch src/index.ts",
+    "start:db": "docker compose up",
+    "test:ci": "vitest --run",
+    "test:dev": "vitest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bm1729/homelink-code-test.git"
+  },
+  "dependencies": {
+    "@fastify/mongodb": "^9.0.2",
+    "@fastify/swagger": "^9.5.1",
+    "@fastify/swagger-ui": "^5.2.3",
+    "@sinclair/typebox": "^0.34.38",
+    "fastify": "^5.4.0",
+    "fastify-plugin": "^5.0.1",
+    "pino-pretty": "^13.0.0"
+  },
+  "engines": {
+    "node": "22.16.0",
+    "npm": "10.9.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@tsconfig/node22": "^22.0.2",
+    "@types/node": "^24.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "mongodb-memory-server": "^10.1.4",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0",
+    "vitest": "^3.2.4"
+  }
+}
