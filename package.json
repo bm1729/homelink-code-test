@@ -5,9 +5,10 @@
     "build": "tsc",
     "lint": "prettier src --check && eslint src --ext .ts",
     "format": "prettier --ignore-path --write \"**/*.+(ts|json)\"",
-    "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
-    "test": "vitest"
+    "run:prod": "node dist/index.js",
+    "run:dev": "tsx watch src/index.ts",
+    "test:ci": "vitest --run",
+    "test:watch": "vitest --watch"
   },
   "repository": {
     "type": "git",
