@@ -1,7 +1,6 @@
 {
   "name": "homelink-code-test",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "lint": "prettier src --check && eslint src --ext .ts",
@@ -16,7 +15,8 @@
   },
   "dependencies": {
     "@sinclair/typebox": "^0.34.38",
-    "fastify": "^5.4.0"
+    "fastify": "^5.4.0",
+    "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
