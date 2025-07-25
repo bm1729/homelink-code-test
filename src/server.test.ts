@@ -1,12 +1,22 @@
 import { FastifyInstance } from 'fastify';
 import { describe, test, expect, beforeAll, afterAll } from 'vitest';
 import buildServer from './server.js';
+import { MongoMemoryServer } from 'mongodb-memory-server';
+import { MongoClient } from 'mongodb';
 
 describe('server', () => {
   let server: FastifyInstance;
+  let mongoServer: MongoMemoryServer;
+  let client: MongoClient;
 
   beforeAll(async () => {
-    server = buildServer();
+    mongoServer = await MongoMemoryServer.create();
+    const uri = mongoServer.getUri();
+    client = new MongoClient(uri);
+    await client.connect();
+
+    // Pass the client or URI to your Fastify plugin
+    server = buildServer({ mongoUri: uri });
     await server.ready();
   });
 

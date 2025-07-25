@@ -1,7 +1,9 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import { User, UserType } from './types/user.js';
+import fastifyPlugin from 'fastify-plugin';
+import fastifyMongo from '@fastify/mongodb';
 
-const buildServer = (): FastifyInstance => {
+const buildServer = (config: { mongoUri: string }): FastifyInstance => {
   const server = Fastify({
     logger: {
       transport: {
@@ -29,6 +31,7 @@ const buildServer = (): FastifyInstance => {
     );
   }
 
+  server.register(fastifyMongo, { url: config.mongoUri });
   server.register(userRoutes, { prefix: '/api/users' });
 
   return server;
