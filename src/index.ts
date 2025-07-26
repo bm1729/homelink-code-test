@@ -5,6 +5,7 @@ const server = buildServer({ mongoUri: 'mongodb://localhost:27017/homelink' });
 const start = async () => {
   try {
     await server.listen({ port: 3000 });
+    2;
   } catch (err) {
     server.log.error(err);
     process.exit(1);

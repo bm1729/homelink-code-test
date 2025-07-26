@@ -1,24 +1,24 @@
 import { FastifyInstance } from 'fastify';
-import { User, UserType } from './types/user';
+import { DeviceType, Device } from './types/device';
 import '@fastify/mongodb';
 
 async function routes(server: FastifyInstance) {
-  // const collection = server.mongo.db.collection('test_collection');
+  const collection = server.mongo.db?.collection('devices');
 
-  server.post<{ Body: UserType; Reply: UserType }>(
+  server.post<{ Body: DeviceType; Reply: DeviceType }>(
     '/',
     {
       schema: {
-        body: User,
+        body: Device,
         response: {
-          200: User,
+          200: Device,
         },
       },
     },
     async (request, reply) => {
-      request.log.info('Received user data:', request.body);
-      const { name, mail } = request.body;
-      reply.status(200).send({ name, mail });
+      request.log.info('Received device data:', request.body);
+      collection?.insertOne(request.body);
+      reply.status(200).send(request.body);
     }
   );
 }
