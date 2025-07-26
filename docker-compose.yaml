@@ -8,8 +8,6 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: homelink
-    volumes:
-      - mongo_data:/data/db
 
   mongo-express:
     image: mongo-express:1.0.2
@@ -23,6 +21,3 @@ services:
       ME_CONFIG_BASICAUTH: "false"
     depends_on:
       - mongo
-
-volumes:
-  mongo_data:

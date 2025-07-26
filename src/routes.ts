@@ -17,7 +17,7 @@ async function routes(server: FastifyInstance) {
     },
     async (request, reply) => {
       request.log.info('Received device data:', request.body);
-      collection?.insertOne(request.body);
+      await collection?.insertOne(request.body);
       reply.status(200).send(request.body);
     }
   );

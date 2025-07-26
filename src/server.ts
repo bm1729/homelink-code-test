@@ -16,7 +16,7 @@ const buildServer = (config: { mongoUri: string }): FastifyInstance => {
   server.register(swagger);
   server.register(swaggerUi);
   server.register(fastifyMongo, { url: config.mongoUri });
-  server.register(routes, { prefix: '/api/users' });
+  server.register(routes, { prefix: '/api/devices' });
 
   return server;
 };

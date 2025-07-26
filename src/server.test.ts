@@ -10,8 +10,10 @@ describe('server', () => {
   let client: MongoClient;
 
   beforeAll(async () => {
-    mongoServer = await MongoMemoryServer.create();
-    const uri = mongoServer.getUri();
+    mongoServer = await MongoMemoryServer.create({
+      instance: { dbName: 'homelink' },
+    });
+    const uri = mongoServer.getUri() + 'homelink';
     client = new MongoClient(uri);
     await client.connect();
 
@@ -25,13 +27,16 @@ describe('server', () => {
   });
 
   test('should respond to POST /api/users with user data', async () => {
-    const userData = { name: 'John Doe', mail: 'jane@gmail.com' };
+    const deviceData = { name: 'John Doe', mail: 'jane@gmail.com' };
     const response = await server.inject({
       method: 'POST',
-      url: '/api/users/',
-      payload: userData,
+      url: '/api/devices/',
+      payload: deviceData,
     });
     expect(response.statusCode).toBe(200);
-    expect(response.json()).toEqual(userData);
+    expect(response.json()).toEqual(deviceData);
+    expect(
+      client.db().collection('devices').findOne({ name: 'John Doe' })
+    ).resolves.toMatchObject(deviceData);
   });
 });
