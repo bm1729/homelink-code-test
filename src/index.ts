@@ -1,6 +1,6 @@
 import buildServer from './server.js';
 
-const server = buildServer();
+const server = buildServer({ mongoUri: 'mongodb://localhost:27017/homelink' });
 
 const start = async () => {
   try {

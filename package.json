@@ -5,8 +5,8 @@
     "build": "tsc",
     "lint": "prettier src --check && eslint src --ext .ts",
     "format": "prettier --ignore-path --write \"**/*.+(ts|json)\"",
-    "run:prod": "node dist/index.js",
-    "run:dev": "tsx watch src/index.ts",
+    "start:prod": "node dist/index.js",
+    "start:dev": "tsx watch src/index.ts",
     "test:ci": "vitest --run",
     "test:watch": "vitest --watch"
   },
@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@fastify/mongodb": "^9.0.2",
+    "@fastify/swagger": "^9.5.1",
+    "@fastify/swagger-ui": "^5.2.3",
     "@sinclair/typebox": "^0.34.38",
     "fastify": "^5.4.0",
     "fastify-plugin": "^5.0.1",

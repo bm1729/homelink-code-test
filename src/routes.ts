@@ -1,8 +1,9 @@
 import { FastifyInstance } from 'fastify';
 import { User, UserType } from './types/user';
+import '@fastify/mongodb';
 
 async function routes(server: FastifyInstance) {
-  //   const collection = server.mongo.db.collection('test_collection');
+  // const collection = server.mongo.db.collection('test_collection');
 
   server.post<{ Body: UserType; Reply: UserType }>(
     '/',
