@@ -6,7 +6,6 @@ import systemRoutes from './routes/system-routes';
 import Ajv from 'ajv';
 
 const ajv = new Ajv({
-  strict: true,
   coerceTypes: false,
 });
 
